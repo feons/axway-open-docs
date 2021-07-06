@@ -120,3 +120,21 @@ To configure the request rate limiter for your user's sessions in API Manager, p
 
 Customers with a large number of entities will also generate large volumes of API Manager requests and should, therefore, consider increasing the default value for `RateLimitFilter.rateLimitSize.`
 {{< /alert >}}
+
+## Configure API Manager Unauthenticated request rate limiter
+
+Rate limit monitors the number of requests that a user can send to API Manager without an active session. If the number of requests exceeds the configured boundaries, a 403 forbidden is thrown and the ip address is locked for the configured time.
+
+To configure the unauthenticated request rate limiter in API Manager, perform the following steps in Policy Studio:
+
+1. Select Environment Configuration > Listeners > API Gateway > API Portal > Paths in the Policy Studio tree.
+2. Double-click the `API Portal v1.4 ('v1.4')` servlet to open its dialog box.
+3. On the servlet dialog box, click to **Edit** the `jersey.config.server.provider.classnames` property.
+4. Add `com.vordel.apiportal.api.filter.UnauthenticatedRateLimitBindingFeature` to the existing comma-separated list of class names.
+5. Click to **Add** two new properties to the **Servlet Properties** list :
+
+   * **Name**: `UnauthenticatedRateLimitFilter.rateLimitSize`. **Value**: Enter the number of requests a user can make in a period of time. Defaults to 200.
+   * **Name**: `UnauthenticatedRateLimitFilter.rateLimitOffset`. **Value**: Enter the amount of time, in milliseconds, that the request rate limiter should allow between the user’s most recent request and the configured number of requests. Defaults to 60000 milliseconds (1 minute).
+6. Click **OK**.
+
+{{< alert title="Note" color="primary" >}}This feature is available only for /forgotpassword endpoint.{{< /alert >}}
