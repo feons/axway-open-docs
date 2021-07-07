@@ -123,7 +123,7 @@ Customers with a large number of entities will also generate large volumes of AP
 
 ## Configure API Manager Unauthenticated request rate limiter
 
-Rate limit monitors the number of requests that a user can send to API Manager without an active session. If the number of requests exceeds the configured boundaries, a 403 forbidden is thrown and the ip address is locked for the configured time.
+The rate limiter monitors the number of requests that a user can send to API Manager without an active session. If the number of requests exceeds the configured limit, a 403 Forbidden error response is returned, and the IP address of the client is locked for the configured time.
 
 To configure the unauthenticated request rate limiter in API Manager, perform the following steps in Policy Studio:
 
@@ -137,4 +137,4 @@ To configure the unauthenticated request rate limiter in API Manager, perform th
    * **Name**: `UnauthenticatedRateLimitFilter.rateLimitOffset`. **Value**: Enter the amount of time, in milliseconds, that the request rate limiter should allow between the user’s most recent request and the configured number of requests. Defaults to 60000 milliseconds (1 minute).
 6. Click **OK**.
 
-{{< alert title="Note" color="primary" >}}This feature is available only for /forgotpassword endpoint.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Currently this feature is only applicable to the /forgotpassword endpoint.{{< /alert >}}
