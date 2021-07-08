@@ -134,7 +134,7 @@ To configure the unauthenticated request rate limiter in API Manager, perform th
 5. Click to **Add** two new properties to the **Servlet Properties** list :
 
    * **Name**: `UnauthenticatedRateLimitFilter.rateLimitSize`. **Value**: Enter the number of requests a user can make in a period of time. Defaults to 200.
-   * **Name**: `UnauthenticatedRateLimitFilter.rateLimitOffset`. **Value**: Enter the amount of time, in milliseconds, that the request rate limiter should allow between the user’s most recent request and the configured number of requests. Defaults to 60000 milliseconds (1 minute).
+   * **Name**: `UnauthenticatedRateLimitFilter.rateLimitOffset`. **Value**: Enter the amount of time, in milliseconds, that the request rate limiter will allow between requests for a single IP address once the number of requests (set in UnauthenticatedRateLimitFilter.rateLimitSize) has been reached". Defaults to 60000 milliseconds (1 minute).
 6. Click **OK**.
 
 {{< alert title="Note" color="primary" >}}Currently this feature is only applicable to the /forgotpassword endpoint.{{< /alert >}}
